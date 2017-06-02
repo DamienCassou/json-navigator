@@ -15,6 +15,8 @@ tree of an [[file:examples/example.json][example JSON document]].
 
 [[file:media/json-tree-anime.gif]]
 
+This project is made possible thanks to the [[https://github.com/DamienCassou/hierarchy][hierarchy]] project.
+
 ** Installing
 
 Use [[http://melpa.org/][melpa]].
