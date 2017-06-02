@@ -67,17 +67,17 @@
 
 JSON should respect this non-default setting for `json-read':
 
-- json-null ⇒ :json-nil
+- ‘json-null’ ⇒ :json-nil
 
 JSON should respect the default settings for `json-read', namely:
 
-- json-object-type ⇒ 'alist
+- ‘json-object-type’ ⇒ 'alist
 
-- json-array-type ⇒ 'vector
+- ‘json-array-type’ ⇒ 'vector
 
-- json-key-type ⇒ nil
+- ‘json-key-type’ ⇒ nil
 
-- json-false ⇒ :json-false"
+- ‘json-false’ ⇒ :json-false"
   ;; wrap all JSON element in a cons with a UID so that hierarchy does
   ;; not confuse similar elements
   (let ((hierarchy (hierarchy-new))
@@ -98,7 +98,7 @@ JSON should respect the default settings for `json-read', namely:
   (cdr item))
 
 (defun json-navigator--insert-ellipsis ()
-  "Insert an horizontal ellispis in current buffer."
+  "Insert an horizontal ellipsis in current buffer."
   (insert "…"))
 
 (defun json-navigator--insert-sequence (json-seq insertfn)
@@ -186,3 +186,5 @@ instead of a full one."
 (provide 'json-navigator)
 
 ;;; json-navigator.el ends here
+
+;;  LocalWords:  json
