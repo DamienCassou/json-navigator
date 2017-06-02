@@ -1,0 +1,18 @@
+# Generated files
+*~
+*.elc
+*-pkg.el
+*.tar
+TAGS
+doc/json-navigator.texi
+doc/json-navigator.info
+
+# Packages
+elpa
+/.cask
+dist
+
+# Ecukes
+/features/project/.cask
+/features/project/test/*.el
+.ecukes-failing-scenarios

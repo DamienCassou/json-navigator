@@ -1,0 +1,9 @@
+{
+	"string": "animal",
+	"number": 42,
+	"object": {"a":"b", "c":"d"},
+	"true": true,
+	"false": false,
+	"null": null,
+	"array": ["animal", 42, {"a":"b", "c":"d"}, true, false, null, ["a", "b", "c"]]
+}

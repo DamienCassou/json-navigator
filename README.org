@@ -1,0 +1,33 @@
+* json-navigator
+  #+BEGIN_HTML
+      <p>
+        <a href="https://travis-ci.org/DamienCassou/json-navigator">
+          <img src="https://travis-ci.org/DamienCassou/json-navigator.svg?branch=master" alt="Build Status" />
+        </a>
+      </p>
+  #+END_HTML
+
+** Summary
+
+Display any JSON document as a tree by typing ~M-x
+json-navigator-navigator~. Here is a screencast showing the navigation
+tree of an [[file:examples/example.json][example JSON document]].
+
+[[file:media/json-tree-anime.gif]]
+
+** Installing
+
+Use [[http://melpa.org/][melpa]].
+
+** Using
+
+Move point before a JSON document and type ~M-x
+json-navigator-navigator~
+
+** Contributing
+
+Yes, please do! See [[file:CONTRIBUTING.md][CONTRIBUTING]] for guidelines.
+
+** License
+
+See [[file:COPYING][COPYING]]. Copyright (c) 2017 [[mailto:damien@cassou.me][Damien Cassou]].
