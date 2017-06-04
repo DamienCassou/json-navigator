@@ -57,5 +57,9 @@ lint : $(SRCS) clean-elc
 
 	# Run package-lint to check for packaging mistakes
 	${CASK} emacs $(EMACSFLAGS) \
+	--eval "(require 'package)" \
+	--eval "(push '(\"melpa\" . \"http://melpa.org/packages/\") package-archives)" \
+	--eval "(package-initialize)" \
+	--eval "(package-refresh-contents)" \
 	-l package-lint.el \
 	-f package-lint-batch-and-exit ${SRCS}
