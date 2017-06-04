@@ -185,10 +185,13 @@ instead of a full one."
   (json-navigator-display-tree (json-navigator--read-after-point)))
 
 ;;;###autoload
-(defun json-navigator-navigate-region (start end)
-  "Navigate JSON inside region between START and END."
+(defun json-navigator-navigate-region (&optional start end)
+  "Navigate JSON inside region between START and END.
+If START (respectively END) is nil, use `point-min' (respectively `point-max') instead."
   (interactive "r")
-  (json-navigator-display-tree (json-navigator--read-region start end)))
+  (let ((start (or start (point-min)))
+        (end (or end (point-max))))
+    (json-navigator-display-tree (json-navigator--read-region start end))))
 
 (provide 'json-navigator)
 
