@@ -16,7 +16,7 @@ TESTS        = $(wildcard test/*.el)
 TAR          = $(DIST)/json-navigator-$(VERSION).tar
 
 
-.PHONY: all check lint deps install uninstall reinstall clean-all clean clean-elc
+.PHONY: all check test unit lint deps install uninstall reinstall clean-all clean clean-elc
 all : deps $(TAR)
 
 deps :
@@ -35,7 +35,7 @@ clean-all : clean
 	rm -rf $(PKG_DIR)
 
 clean-elc :
-	rm -f *.elc
+	rm -f *.elc test/*.elc
 
 clean : clean-elc
 	rm -rf $(DIST)
@@ -47,7 +47,12 @@ $(TAR) : $(DIST) $(SRCS)
 $(DIST) :
 	mkdir $(DIST)
 
-check : lint
+check : test lint
+
+test: unit
+
+unit: $(PKG_DIR) clean-elc
+	${CASK} exec buttercup -L .
 
 lint : $(SRCS) clean-elc
 	# Byte compile all and stop on any warning or error

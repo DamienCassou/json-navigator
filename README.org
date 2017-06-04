@@ -4,6 +4,9 @@
         <a href="https://travis-ci.org/DamienCassou/json-navigator">
           <img src="https://travis-ci.org/DamienCassou/json-navigator.svg?branch=master" alt="Build Status" />
         </a>
+        <a href='https://coveralls.io/github/DamienCassou/json-navigator?branch=master'>
+          <img src='https://coveralls.io/repos/github/DamienCassou/json-navigator/badge.svg?branch=master' alt='Coverage Status' />
+        </a>
       </p>
   #+END_HTML
 
