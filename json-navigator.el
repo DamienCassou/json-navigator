@@ -88,10 +88,11 @@ JSON should respect the default settings for `json-read', namely:
                                   (json-navigator--childrenfn (json-navigator--unwrap item)))))
     hierarchy))
 
-(defun json-navigator--read ()
-  "Read json from point."
+(defun json-navigator--read-after-point ()
+  "Read json after point."
   (let ((json-null :json-null))
-    (json-read)))
+    (save-excursion
+      (json-read))))
 
 (defun json-navigator--unwrap (item)
   "Return JSON element inside ITEM, ignoring UID."
@@ -178,10 +179,10 @@ instead of a full one."
       (switch-to-buffer (current-buffer)))))
 
 ;;;###autoload
-(defun json-navigator-navigate ()
+(defun json-navigator-navigate-after-point ()
   "Navigate JSON after point."
   (interactive)
-  (json-navigator-display-tree (json-navigator--read)))
+  (json-navigator-display-tree (json-navigator--read-after-point)))
 
 (provide 'json-navigator)
 
