@@ -94,6 +94,11 @@ JSON should respect the default settings for `json-read', namely:
     (save-excursion
       (json-read))))
 
+(defun json-navigator--read-region (start end)
+  "Read json between START and END."
+  (let ((content (buffer-substring-no-properties start end)))
+    (json-read-from-string content)))
+
 (defun json-navigator--unwrap (item)
   "Return JSON element inside ITEM, ignoring UID."
   (cdr item))
@@ -184,6 +189,12 @@ instead of a full one."
   "Navigate JSON after point."
   (interactive)
   (json-navigator-display-tree (json-navigator--read-after-point)))
+
+;;;###autoload
+(defun json-navigator-navigate-region (start end)
+  "Navigate JSON inside region between START and END."
+  (interactive "r")
+  (json-navigator-display-tree (json-navigator--read-region start end)))
 
 (provide 'json-navigator)
 
