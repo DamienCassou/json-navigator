@@ -175,7 +175,8 @@ instead of a full one."
       (let ((inhibit-read-only t))
         (erase-buffer)
         (widget-create tree-widget)
-        (goto-char (point-min)))
+        (goto-char (point-min))
+        (special-mode))
       (switch-to-buffer (current-buffer)))))
 
 ;;;###autoload
