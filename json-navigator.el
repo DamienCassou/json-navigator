@@ -4,7 +4,7 @@
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "24.3") (hierarchy "0.5.0"))
+;; Package-Requires: ((emacs "24.3") (hierarchy "0.6.0"))
 ;; GIT: https://github.com/DamienCassou/json-navigator
 
 ;; This file is not part of GNU Emacs.
@@ -164,19 +164,10 @@ instead of a full one."
 
 (defun json-navigator-display-tree (json)
   "Display hierarchy of JSON in a tree widget."
-  (require 'tree-widget)
-  (let* ((hierarchy (json-navigator-create-hierarchy json))
-         (tree-widget (hierarchy-convert-to-tree-widget
-                       hierarchy
-                       (lambda (item _) (json-navigator--insert (json-navigator--unwrap item))))))
-    (with-current-buffer (get-buffer-create "*json-navigator-tree*")
-      (setq-local buffer-read-only t)
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (widget-create tree-widget)
-        (goto-char (point-min))
-        (special-mode))
-      (switch-to-buffer (current-buffer)))))
+  (switch-to-buffer
+   (hierarchy-tree-display
+    (json-navigator-create-hierarchy json)
+    (lambda (item _) (json-navigator--insert (json-navigator--unwrap item))))))
 
 ;;;###autoload
 (defun json-navigator-navigate-after-point ()
