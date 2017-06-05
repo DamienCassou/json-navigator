@@ -151,7 +151,7 @@ instead of a full one."
      json-array
      (lambda (item) (json-navigator--insert item t)))
     (when (> (map-length json-array) json-navigator-display-length)
-      (insert "..."))
+      (json-navigator--insert-ellipsis))
     (insert "]")))
 
 (defun json-navigator--insert-pair (json-pair)
