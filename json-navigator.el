@@ -132,12 +132,15 @@ JSON-OBJECT instead of a full one."
   (if summarize
       (unless (seq-empty-p json-object)
         (json-navigator--insert-ellipsis))
-    (json-navigator--insert-sequence
-     (map-keys json-object)
-     (lambda (key)
-       (insert (format "\"%s\": " key))
-       (json-navigator--insert (map-elt json-object key) t))))
+    (json-navigator--insert-sequence json-object #'json-navigator--insert-pair))
   (insert "}"))
+
+(defun json-navigator--insert-pair (json-pair)
+  "Insert JSON-PAIR into current buffer.
+
+The value of JSON-PAIR is summarized."
+  (insert (format "\"%s\": " (car json-pair)))
+  (json-navigator--insert (cdr json-pair) t))
 
 (defun json-navigator--insert-array (json-array &optional summarize)
   "Insert JSON-ARRAY into current buffer.
@@ -154,10 +157,6 @@ instead of a full one."
       (json-navigator--insert-ellipsis))
     (insert "]")))
 
-(defun json-navigator--insert-pair (json-pair)
-  "Insert key of JSON-PAIR into current buffer."
-  (insert (format "%s" (car json-pair))))
-
 (defun json-navigator--insert (json &optional summarize)
   "Insert into current buffer a representation of JSON.
 
@@ -166,7 +165,7 @@ instead of a full one."
   (cond
    ((json-navigator-object-p json) (json-navigator--insert-object json summarize))
    ((json-navigator-array-p json) (json-navigator--insert-array json summarize))
-   ((json-navigator-pair-p json) (json-navigator--insert-pair json))
+   ((json-navigator-pair-p json) (insert (format "%s" (car json))))
    (t (insert (format "%s" json)))))
 
 (defun json-navigator-display-tree (json)
