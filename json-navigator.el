@@ -50,7 +50,7 @@
   "Return non-nil if JSON is an array."
   (vectorp json))
 
-(defun json-navigator--childrenfn (json)
+(defun json-navigator--children (json)
   "Return children of JSON as a list."
   (cond
    ;; children of an object are its name/value pairs
@@ -80,7 +80,7 @@ JSON should respect the default settings for `json-read', namely:
 - ‘json-false’ ⇒ :json-false"
   ;; wrap all JSON element in a cons with a UID so that hierarchy does
   ;; not confuse similar elements
-  (hierarchy-from-list json t #'json-navigator--childrenfn))
+  (hierarchy-from-list json t #'json-navigator--children))
 
 (defun json-navigator--read-after-point ()
   "Read json after point."
