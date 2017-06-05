@@ -36,9 +36,10 @@
 
 (defun json-navigator-object-p (json)
   "Return non-nil if JSON is an object."
-  (and
-   (consp json)
-   (json-navigator-pair-p (car json))))
+  (or (null json)
+      (and
+       (consp json)
+       (json-navigator-pair-p (car json)))))
 
 (defun json-navigator-pair-p (json)
   "Return non-nil if JSON is an object's pair."
