@@ -159,7 +159,7 @@ instead of a full one."
   (insert (format "%s" (car json-pair))))
 
 (defun json-navigator--insert (json &optional summarize)
-  "Insert into current buffer a short representation of JSON.
+  "Insert into current buffer a representation of JSON.
 
 If SUMMARIZE is non-nil, insert a short representation of JSON
 instead of a full one."
