@@ -89,10 +89,16 @@ JSON should respect the default settings for `json-read', namely:
     (save-excursion
       (json-read))))
 
+(defun json-navigator--read-string (string)
+  "Read json STRING."
+  (with-temp-buffer
+    (insert string)
+    (goto-char (point-min))
+    (json-navigator--read-after-point)))
+
 (defun json-navigator--read-region (start end)
   "Read json between START and END."
-  (let ((content (buffer-substring-no-properties start end)))
-    (json-read-from-string content)))
+  (json-navigator--read-string (buffer-substring-no-properties start end)))
 
 (defun json-navigator--unwrap (item)
   "Return JSON element inside ITEM, ignoring UID."
