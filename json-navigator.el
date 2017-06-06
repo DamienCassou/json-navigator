@@ -153,8 +153,6 @@ instead of a full one."
     (json-navigator--insert-sequence
      json-array
      (lambda (item) (json-navigator--insert item t)))
-    (when (> (map-length json-array) json-navigator-display-length)
-      (json-navigator--insert-ellipsis))
     (insert "]")))
 
 (defun json-navigator--insert (json &optional summarize)
