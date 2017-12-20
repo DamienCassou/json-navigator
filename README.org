@@ -27,7 +27,18 @@ Use [[http://melpa.org/][melpa]].
 ** Using
 
 Move point before a JSON document and type ~M-x
-json-navigator-navigator~
+json-navigator-navigate-after-point~, alternatively select a JSON region and
+invoke ~M-x json-navigator-navigate-region~. This will open a new buffer
+where you can navigate the JSON hierarchy.
+
+The available keybindings in the ~*hierarchy tree*~ buffer are the standard
+Emacs tree widget ones, ~Tab~ and ~shift-Tab~ will move on the tree, and
+~Enter~ will expand/collapse nodes. The mouse can also be used to
+expand/collapse nodes by clicking on them.
+
+[[https://www.emacswiki.org/emacs/TreeMode][Tree mode]], if installed, can be activated in the JSON navigator
+~*hierarchy-tree*~ buffer to allow for additional functionality like expanding
+whole subtrees, navigating to siblings and so on.
 
 ** Contributing
 
