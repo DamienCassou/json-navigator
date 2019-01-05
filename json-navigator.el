@@ -34,6 +34,9 @@
 (defvar json-navigator-display-length 3
   "Number of JSON elements to print for an array or object.")
 
+(define-derived-mode json-navigator-mode special-mode "Json Navigator"
+  "Major mode for json navigator")
+
 (defun json-navigator-object-p (json)
   "Return non-nil if JSON is an object."
   (or (null json)
@@ -171,7 +174,8 @@ instead of a full one."
   (switch-to-buffer
    (hierarchy-tree-display
     (json-navigator-create-hierarchy json)
-    (lambda (item _) (json-navigator--insert (json-navigator--unwrap item))))))
+    (lambda (item _) (json-navigator--insert (json-navigator--unwrap item)))))
+  (json-navigator-mode))
 
 ;;;###autoload
 (defun json-navigator-navigate-after-point ()
