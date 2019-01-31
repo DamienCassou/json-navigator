@@ -23,11 +23,6 @@
 
 ;;; Code:
 
-(declare-function undercover "undercover")
-
-(when (require 'undercover nil t)
-  (undercover "json-navigator.el"))
-
 (require 'json-navigator)
 
 (require 'assess)
