@@ -7,8 +7,8 @@ before_install:
   - cask
 
 env:
-  - EVM_EMACS=emacs-25.1-travis
-  - EVM_EMACS=emacs-25.2-travis
+  - EVM_EMACS=emacs-25.3-travis
+  - EVM_EMACS=emacs-26.1-travis
 
 matrix:
   fast_finish: true
