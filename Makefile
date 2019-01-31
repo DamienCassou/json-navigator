@@ -1,70 +1,22 @@
-CASK        ?= cask
-EMACS       ?= emacs
-DIST        ?= dist
-EMACSFLAGS   = --batch -Q
-EMACSBATCH   = $(EMACS) $(EMACSFLAGS)
+ELPA_DEPENDENCIES=package-lint assess buttercup hierarchy
 
-VERSION     := $(shell EMACS=$(EMACS) $(CASK) version)
-PKG_DIR     := $(shell EMACS=$(EMACS) $(CASK) package-directory)
-PROJ_ROOT   := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+ELPA_ARCHIVES=melpa gnu
 
-EMACS_D      = ~/.emacs.d
-USER_ELPA_D  = $(EMACS_D)/elpa
+TEST_ERT_FILES=test/json-navigator-test.el
+LINT_CHECKDOC_FILES=json-navigator.el test/json-navigator-test.el
+LINT_PACKAGE_LINT_FILES=json-navigator.el
+LINT_COMPILE_FILES=json-navigator.el test/json-navigator-test.el
 
-SRCS         = $(filter-out %-autoloads.el, $(filter-out %-pkg.el, $(wildcard *.el)))
-TESTS        = $(wildcard test/*.el)
-TAR          = $(DIST)/json-navigator-$(VERSION).tar
+makel.mk:
+	# Download makel
+	@if [ -f ../makel/makel.mk ]; then \
+		ln -s ../makel/makel.mk .; \
+	else \
+		curl \
+		--fail --silent --show-error --insecure --location \
+		--retry 9 --retry-delay 9 \
+		-O https://gitlab.petton.fr/DamienCassou/makel/raw/v0.5.1/makel.mk; \
+	fi
 
-
-.PHONY: all check test unit lint deps install uninstall reinstall clean-all clean clean-elc
-all : deps $(TAR)
-
-deps :
-	$(CASK) install
-
-install : $(TAR)
-	$(EMACSBATCH) -l package -f package-initialize \
-	--eval '(package-install-file "$(PROJ_ROOT)/$(TAR)")'
-
-uninstall :
-	rm -rf $(USER_ELPA_D)/json-navigator-*
-
-reinstall : clean uninstall install
-
-clean-all : clean
-	rm -rf $(PKG_DIR)
-
-clean-elc :
-	rm -f *.elc test/*.elc
-
-clean : clean-elc
-	rm -rf $(DIST)
-	rm -f *-pkg.el
-
-$(TAR) : $(DIST) $(SRCS)
-	$(CASK) package $(DIST)
-
-$(DIST) :
-	mkdir $(DIST)
-
-check : test lint
-
-test: unit
-
-unit: $(PKG_DIR) clean-elc
-	${CASK} exec buttercup -L .
-
-lint : $(SRCS) clean-elc
-	# Byte compile all and stop on any warning or error
-	${CASK} emacs $(EMACSFLAGS) \
-	--eval "(setq byte-compile-error-on-warn t)" \
-	-L . -f batch-byte-compile ${SRCS} ${TESTS}
-
-	# Run package-lint to check for packaging mistakes
-	${CASK} emacs $(EMACSFLAGS) \
-	--eval "(require 'package)" \
-	--eval "(push '(\"melpa\" . \"http://melpa.org/packages/\") package-archives)" \
-	--eval "(package-initialize)" \
-	--eval "(package-refresh-contents)" \
-	-l package-lint.el \
-	-f package-lint-batch-and-exit ${SRCS}
+# Include makel.mk if present
+-include makel.mk

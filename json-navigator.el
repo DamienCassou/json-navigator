@@ -1,6 +1,6 @@
 ;;; json-navigator.el --- View and navigate JSON structures
 
-;; Copyright (C) 2017 Damien Cassou
+;; Copyright (C) 2017-2019 Damien Cassou
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; URL: https://github.com/DamienCassou/json-navigator
