@@ -5,7 +5,7 @@
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; URL: https://github.com/DamienCassou/json-navigator
 ;; Version: 0.1.1
-;; Package-Requires: ((emacs "24.3") (hierarchy "0.6.0"))
+;; Package-Requires: ((emacs "25.1") (hierarchy "0.6.0"))
 
 ;; This file is not part of GNU Emacs.
 
@@ -30,6 +30,7 @@
 
 (require 'hierarchy)
 (require 'json)
+(require 'seq)
 
 (defvar json-navigator-display-length 3
   "Number of JSON elements to print for an array or object.")
