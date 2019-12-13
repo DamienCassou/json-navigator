@@ -1,18 +1,13 @@
-language: generic
-sudo: false
+language: nix
 
-before_install:
-  - curl -fsSkL https://gist.github.com/rejeep/ebcd57c3af83b049833b/raw > x.sh && source ./x.sh
-  - evm install $EVM_EMACS --use --skip
-  - make ci-dependencies
+install:
+  - bash <(curl https://raw.githubusercontent.com/purcell/nix-emacs-ci/master/travis-install)
 
 env:
-  - EVM_EMACS=emacs-25.3-travis
-  - EVM_EMACS=emacs-26.1-travis
-
-matrix:
-  fast_finish: true
+  - EMACS_CI=emacs-25-3
+  - EMACS_CI=emacs-26-3
 
 script:
   - emacs --version
+  - make ci-dependencies
   - make check
