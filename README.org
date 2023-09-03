@@ -46,4 +46,4 @@ Yes, please do! See [[file:CONTRIBUTING.md][CONTRIBUTING]] for guidelines.
 
 ** License
 
-See [[file:COPYING][COPYING]]. Copyright (c) 2017 [[mailto:damien@cassou.me][Damien Cassou]].
+See [[file:COPYING][COPYING]]. Copyright (c) 2017-2023 [[mailto:damien@cassou.me][Damien Cassou]].
