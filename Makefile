@@ -1,4 +1,4 @@
-ELPA_DEPENDENCIES=package-lint assess buttercup hierarchy
+ELPA_DEPENDENCIES=package-lint assess buttercup hierarchy m-buffer
 
 ELPA_ARCHIVES=melpa gnu
 
