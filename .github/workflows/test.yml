@@ -1,0 +1,9 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  compile:
+    name: Compile
+    uses: DamienCassou/emacs-workflows/.github/workflows/makel.yml@main
