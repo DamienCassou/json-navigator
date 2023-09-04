@@ -16,3 +16,4 @@ dist
 /features/project/.cask
 /features/project/test/*.el
 .ecukes-failing-scenarios
+/makel.mk
