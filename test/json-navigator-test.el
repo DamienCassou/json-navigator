@@ -1,6 +1,6 @@
 ;;; json-navigator-test.el --- Tests for json-navigator  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  Damien Cassou
+;; Copyright (C) 2017-2023  Damien Cassou
 
 ;; Author: Damien Cassou <damien@cassou.me>
 

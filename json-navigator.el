@@ -1,6 +1,6 @@
 ;;; json-navigator.el --- View and navigate JSON structures
 
-;; Copyright (C) 2017-2019 Damien Cassou
+;; Copyright (C) 2017-2023 Damien Cassou
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; URL: https://github.com/DamienCassou/json-navigator
@@ -36,7 +36,7 @@
   "Number of JSON elements to print for an array or object.")
 
 (define-derived-mode json-navigator-mode special-mode "Json Navigator"
-  "Major mode for json navigator")
+  "Major mode for json navigator.")
 
 (defun json-navigator-object-p (json)
   "Return non-nil if JSON is an object."
@@ -72,17 +72,17 @@
 
 JSON should respect this non-default setting for `json-read':
 
-- ‘json-null’ ⇒ :json-nil
+- `json-null' ⇒ :json-nil
 
 JSON should respect the default settings for `json-read', namely:
 
-- ‘json-object-type’ ⇒ 'alist
+- `json-object-type' ⇒ `alist'
 
-- ‘json-array-type’ ⇒ 'vector
+- `json-array-type' ⇒ `vector'
 
-- ‘json-key-type’ ⇒ nil
+- `json-key-type' ⇒ nil
 
-- ‘json-false’ ⇒ :json-false"
+- `json-false' ⇒ :json-false"
   ;; wrap all JSON element in a cons with a UID so that hierarchy does
   ;; not confuse similar elements
   (hierarchy-from-list json t #'json-navigator--children))

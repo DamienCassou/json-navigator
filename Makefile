@@ -1,4 +1,4 @@
-ELPA_DEPENDENCIES=package-lint assess buttercup hierarchy
+ELPA_DEPENDENCIES=package-lint assess buttercup hierarchy m-buffer
 
 ELPA_ARCHIVES=melpa gnu
 
@@ -15,7 +15,7 @@ makel.mk:
 		curl \
 		--fail --silent --show-error --insecure --location \
 		--retry 9 --retry-delay 9 \
-		-O https://gitlab.petton.fr/DamienCassou/makel/raw/v0.5.1/makel.mk; \
+		-O https://github.com/DamienCassou/makel/raw/v0.8.0/makel.mk; \
 	fi
 
 # Include makel.mk if present
